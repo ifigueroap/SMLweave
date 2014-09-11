@@ -1,0 +1,4 @@
+#!/bin/bash
+
+smlnotangle $1;
+noweave -delay -latex -filter smltrans $1

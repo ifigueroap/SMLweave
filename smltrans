@@ -1,0 +1,32 @@
+#!/bin/bash
+
+gawk '
+/^@file.*/ {echo = 1}
+
+/^@begin code*/ {beginCode = $0; echo = 0; next}
+
+/@defn.*/ {
+   isSmlTrans = match($0,/^@defn (.*)\.smlnjtrans/, ary1);
+   if (isSmlTrans == 0) {
+     print beginCode; print; echo = 1; next;
+   }
+   else {
+     print "@text \\input{"ary1[1]".smlnjtrans.tex}";      
+   }
+}
+
+/^@end code*/ {
+   if (isSmlTrans == 0) { 
+      print; next;
+   }
+   else {
+      echo = 1;
+      isSmlTrans = 0;
+      next
+   }
+}
+
+/^@.*/ {if (echo == 1) { print }}
+'
+
+$*

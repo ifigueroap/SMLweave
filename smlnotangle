@@ -1,0 +1,10 @@
+#!/bin/bash
+
+$NOWEB_LIB/markup $1 | $NOWEB_LIB/mnt -all;
+
+if [ -f init.smlnjtrans ]
+then 
+    smlnjtrans sml "-" $(cat init.smlnjtrans) *.smlnjtrans
+else
+    smlnjtrans sml "-" *.smlnjtrans
+fi
