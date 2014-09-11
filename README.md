@@ -13,6 +13,9 @@ You must have the following commands in your executable path:
 * smlnjtrans, available [here](http://alleystoughton.us/smlnjtrans).
 * noweave, part of the Noweb literate programming tool, available at
   [here](http://www.cs.tufts.edu/~nr/noweb/).
+* gawk, the GNU awk implementation. I'm using this because I could not
+  find how to capture groups in a regular expression using OSX's
+  default awk program.
 
 Additionally, you must set the NOWEB_LIB environment variable to the
 location of the markup and mnt executables from noweb. In the Brew
